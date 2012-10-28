@@ -38,6 +38,10 @@ cp /etc/zfs/zpool.cache /mnt/gentoo/etc/zfs/zpool.cache
 # Copy resolv.conf into chroot
 cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf
 
+# SPS- create directories for below
+cd /mnt/gentoo
+mkdir proc/ dev/ sys/
+
 # Mount filesystems
 mount -t proc none /mnt/gentoo/proc
 mount --rbind /dev /mnt/gentoo/dev
