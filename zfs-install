@@ -134,14 +134,18 @@ emerge vim
 #
 # Follow chapters 8 through 12 of Gentoo Handboook: http://www.gentoo.org/doc/en/handbook/
 #
-emerge syslog-ng rotatelog
-rc-update add syslog-ng default
+emerge syslog-ng rotatelog && rc-update add syslog-ng default
 
-emerge vixie-cron
-rc-update add vixie-cron default
+emerge vixie-cron && rc-update add vixie-cron default
 
 emerge dhcpcd
 
+reboot
+
+
+# Make user in new system
+newusername="shaun"
+useradd -m -G users,wheel,audio -s /bin/bash $newusername && passwd $newusername
 
 # Make recovery snapshot after booting into new install
 zfs snapshot rpool/ROOT/gentoo@install
